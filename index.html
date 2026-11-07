@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SocialFind — discover voluntarily shared public social profiles." />
+  <meta name="theme-color" content="#0b1020" />
+  <title>SocialFind — Find Your Social Identity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="SocialFind home">
+        <span class="brand-mark">S</span><span>social<span class="brand-accent">find</span></span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="#home" data-i18n="navHome">Home</a>
+        <a href="#explore" data-i18n="navExplore">Explore</a>
+        <a href="#how" data-i18n="navHow">How it works</a>
+        <a href="#safety" data-i18n="navSafety">Safety</a>
+      </nav>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">☾</button>
+        <button class="lang-btn" id="languageToggle">বাংলা</button>
+        <button class="btn btn-ghost" id="loginOpen" data-i18n="login">Log in</button>
+        <button class="btn btn-primary" id="signupOpen" data-i18n="join">Create profile</button>
+        <button class="mobile-menu icon-btn" id="mobileMenu" aria-label="Open menu">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section-wrap" id="home">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse"></span><span data-i18n="eyebrow">YOUR PUBLIC SOCIAL DIRECTORY</span></div>
+          <h1 data-i18n="heroTitle">Find your <span class="gradient-text">social identity.</span></h1>
+          <p class="hero-subtitle" data-i18n="heroText">Discover profiles people choose to share. One simple search, all their public links in one place.</p>
+          <div class="search-panel">
+            <div class="search-input-wrap"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="Search by name, username or profession..." data-i18n-placeholder="searchPlaceholder" autocomplete="off"></div>
+            <button class="btn btn-primary search-btn" id="searchButton" data-i18n="search">Search</button>
+          </div>
+          <div class="search-meta"><span>⌕ <span data-i18n="try">Try:</span></span><button class="suggestion" data-search="designer">designer</button><button class="suggestion" data-search="creator">creator</button><button class="suggestion" data-search="developer">developer</button></div>
+          <div class="hero-trust"><span class="trust-icon">✓</span><span data-i18n="trust">Only voluntarily shared public profiles. No private account lookup.</span></div>
+        </div>
+        <div class="hero-art" aria-label="Social profile illustration">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="floating-icon fb">f</div><div class="floating-icon ig">◎</div><div class="floating-icon tt">♪</div><div class="floating-icon in">in</div>
+          <div class="profile-preview">
+            <div class="preview-cover"></div>
+            <div class="preview-content">
+              <div class="avatar avatar-large avatar-purple">AG</div>
+              <div class="preview-name">Alex Morgan <span class="verified">✓</span></div>
+              <div class="preview-handle">@alexmorgan · Designer</div>
+              <div class="preview-line"></div><div class="preview-line short"></div>
+              <div class="preview-socials"><span>f</span><span>◎</span><span>♪</span><span>in</span></div>
+            </div>
+          </div>
+          <div class="floating-note"><span class="note-check">✓</span><div><b>One profile.</b><small>All public links.</small></div></div>
+        </div>
+      </section>
+
+      <section class="stats-strip section-wrap">
+        <div><strong id="profileCount">0</strong><span data-i18n="publicProfiles">public profiles</span></div>
+        <div><strong>8+</strong><span data-i18n="platforms">social platforms</span></div>
+        <div><strong>100%</strong><span data-i18n="userControl">user-controlled links</span></div>
+      </section>
+
+      <section class="content-section section-wrap" id="explore">
+        <div class="section-heading">
+          <div><div class="eyebrow" data-i18n="directoryEyebrow">DISCOVER PEOPLE</div><h2 data-i18n="directoryTitle">Explore public profiles</h2><p data-i18n="directoryText">Find creators, professionals and people who have chosen to share their links.</p></div>
+          <button class="btn btn-outline" id="addProfileOpen">＋ <span data-i18n="addYourProfile">Add your profile</span></button>
+        </div>
+        <div class="filter-row">
+          <div class="filter-chips" id="categoryFilters">
+            <button class="chip active" data-category="All" data-i18n="all">All</button>
+            <button class="chip" data-category="Designer" data-i18n="designer">Designers</button>
+            <button class="chip" data-category="Creator" data-i18n="creators">Creators</button>
+            <button class="chip" data-category="Developer" data-i18n="developers">Developers</button>
+            <button class="chip" data-category="Business" data-i18n="business">Business</button>
+          </div>
+          <span class="result-count" id="resultCount">Showing all profiles</span>
+        </div>
+        <div class="profile-grid" id="profileGrid"></div>
+        <div class="empty-state hidden" id="emptyState"><div class="empty-icon">⌕</div><h3 data-i18n="noResults">No profiles found</h3><p data-i18n="noResultsText">Try another name or category, or add your own public profile.</p><button class="btn btn-primary" id="emptyAdd">Add your profile</button></div>
+      </section>
+
+      <section class="how-section" id="how">
+        <div class="section-wrap">
+          <div class="center-heading"><div class="eyebrow" data-i18n="simpleEyebrow">SIMPLE BY DESIGN</div><h2 data-i18n="howTitle">How SocialFind works</h2><p data-i18n="howText">A transparent directory built around consent and control.</p></div>
+          <div class="steps-grid">
+            <article class="step-card"><div class="step-number">01</div><div class="step-icon">✍</div><h3 data-i18n="step1Title">Create your profile</h3><p data-i18n="step1Text">Add your name, a short bio and the social links you want to share.</p></article>
+            <article class="step-card"><div class="step-number">02</div><div class="step-icon">⌕</div><h3 data-i18n="step2Title">Be discoverable</h3><p data-i18n="step2Text">Choose your visibility and let people find your public profile.</p></article>
+            <article class="step-card"><div class="step-number">03</div><div class="step-icon">↗</div><h3 data-i18n="step3Title">Connect safely</h3><p data-i18n="step3Text">Visitors open the links you have intentionally added.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="safety-section section-wrap" id="safety">
+        <div class="safety-card"><div class="safety-symbol">♢</div><div><div class="eyebrow" data-i18n="privacyEyebrow">PRIVACY FIRST</div><h2 data-i18n="privacyTitle">Your identity. Your choice.</h2><p data-i18n="privacyText">SocialFind does not search private accounts or identify people from phone numbers. Profiles are created by their owners, and every member controls which links are public.</p><div class="safety-points"><span>✓ <span data-i18n="privacyPoint1">Opt-in public profiles</span></span><span>✓ <span data-i18n="privacyPoint2">Owner-managed social links</span></span><span>✓ <span data-i18n="privacyPoint3">Report and remove options</span></span></div></div><div class="safety-visual"><div class="shield">✓</div><span data-i18n="safeByDesign">SAFE BY DESIGN</span></div></div>
+      </section>
+
+      <section class="cta-section section-wrap"><div><div class="eyebrow">SOCIALFIND</div><h2 data-i18n="ctaTitle">Bring your social world together.</h2><p data-i18n="ctaText">Create one profile and share the links that represent you.</p></div><button class="btn btn-light" id="ctaSignup" data-i18n="createFree">Create your free profile →</button></section>
+    </main>
+
+    <footer class="footer section-wrap"><a class="brand" href="#"><span class="brand-mark">S</span><span>social<span class="brand-accent">find</span></span></a><p data-i18n="footerText">A public profile directory built with privacy and consent in mind.</p><div class="footer-links"><a href="#safety" data-i18n="privacyPolicy">Privacy</a><a href="#how" data-i18n="about">About</a><a href="mailto:hello@socialfind.example" data-i18n="contact">Contact</a></div><small>© <span id="year"></span> SocialFind. <span data-i18n="rights">All rights reserved.</span></small></footer>
+  </div>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div id="modalContent"></div>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
